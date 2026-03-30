@@ -250,3 +250,9 @@ bot.on('message', async (msg) => {
 bot.on('polling_error', err => console.error('Polling error:', err.message));
 
 console.log(`Bot running as @${BOT_NAME}   Ctrl+C to stop.`);
+// Keep alive for Koyeb
+const http = require('http');
+http.createServer((req, res) => {
+  res.write('Bot is running!');
+  res.end();
+}).listen(process.env.PORT || 3000);
